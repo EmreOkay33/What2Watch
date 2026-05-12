@@ -22,7 +22,6 @@
         <h1>Watchlist</h1>
         <p>Alle Filme, die du später ansehen möchtest.</p>
       </div>
-      <a href="/swipe" class="action-link">Zurück zum Swipe</a>
     </header>
 
     {#if $watchlist.length === 0}
