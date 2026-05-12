@@ -43,9 +43,12 @@
 
 <style>
   .page {
+    min-height: 100vh;
     padding: 1.5rem;
     max-width: 640px;
     margin: 0 auto;
+    background: #09090b;
+    color: #f5f5f5;
   }
 
   .profile-form {
@@ -58,12 +61,15 @@
     display: grid;
     gap: 0.5rem;
     font-weight: 700;
+    color: #f5f5f5;
   }
 
   input {
     padding: 0.85rem 1rem;
     border-radius: 14px;
     border: 1px solid #d7d7d7;
+    color: #111214;
+    background: white;
   }
 
   button {

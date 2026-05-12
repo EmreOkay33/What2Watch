@@ -17,8 +17,6 @@
   <div class="shell">
     <header class="top-bar">
       <h1>Favoriten-Liste</h1>
-      <a href="/add" class="add-link">+ Film hinzufügen</a>
-      <a href="/swipe" class="swipe-link">Swipen</a>
     </header>
 
     {#if $favorites.length === 0}

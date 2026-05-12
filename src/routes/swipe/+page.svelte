@@ -39,10 +39,6 @@
         <span class="brand">What2Watch</span>
         <span class="mode">Swipe-Mode</span>
       </div>
-      <nav class="quick-nav">
-        <a href="/favorites">Favoriten</a>
-        <a href="/watchlist">Watchlist</a>
-      </nav>
     </header>
 
     <div class="search-block">
@@ -127,25 +123,6 @@
   .mode {
     color: #a6a6a8;
     font-size: 0.95rem;
-  }
-
-  .quick-nav {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .quick-nav a {
-    padding: 0.75rem 1.1rem;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
-    color: #f5f5f5;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  .quick-nav a:hover {
-    background: rgba(255, 255, 255, 0.15);
   }
 
   .search-block input {

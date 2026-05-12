@@ -112,9 +112,12 @@
 
 <style>
   .page {
+    min-height: 100vh;
     padding: 1.5rem;
     max-width: 980px;
     margin: 0 auto;
+    background: #09090b;
+    color: #f5f5f5;
   }
 
   h1 {
@@ -123,7 +126,7 @@
 
   p {
     margin: 0;
-    color: #666;
+    color: #b4b4b7;
   }
 
   .movie-form {
@@ -146,7 +149,7 @@
     display: grid;
     gap: 0.5rem;
     font-weight: 700;
-    color: #666;
+    color: #f5f5f5;
   }
 
   input,
