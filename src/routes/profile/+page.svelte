@@ -37,6 +37,35 @@
   const selectedSerie  = $derived(favSeries.find(s => s.id === selectedSeriesId) ?? null);
 
   let saving = $state(false);
+
+  async function compressAndUpload(e) {
+    const file = e.currentTarget.files?.[0];
+    if (!file) return;
+    saving = true;
+    try {
+      const img = await createImageBitmap(file);
+      const MAX = 400;
+      const scale = Math.min(1, MAX / Math.max(img.width, img.height));
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      const blob = await new Promise(res => canvas.toBlob(res, 'image/jpeg', 0.75));
+      const fd = new FormData();
+      fd.append('avatar', blob, 'avatar.jpg');
+      const res = await fetch('?/uploadAvatar', { method: 'POST', body: fd });
+      if (res.ok) location.reload();
+      else {
+        const json = await res.json().catch(() => ({}));
+        alert(json?.data?.avatarError ?? 'Upload fehlgeschlagen');
+      }
+    } catch (err) {
+      alert('Fehler beim Upload: ' + err.message);
+    } finally {
+      saving = false;
+    }
+  }
 </script>
 
 <div class="page">
@@ -57,7 +86,7 @@
           {/if}
           <div class="avatar-overlay">Ändern</div>
           <input type="file" name="avatar" accept="image/*" class="avatar-input"
-            onchange={(e) => e.currentTarget.form.requestSubmit()} />
+            disabled={saving} onchange={compressAndUpload} />
         </label>
       </form>
       {#if data.avatar}
