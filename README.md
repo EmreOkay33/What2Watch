@@ -119,7 +119,7 @@
 
 - **Mockup:** Klickbarer Figma-Prototyp, erstellt am **27.04.2026**
 
-  > Figma-Prototyp: [What2Watch Figma Link hier einfügen]
+  > Figma-Prototyp: wurde als PDF-Export eingereicht
 
   ![Figma – Swipe-Screen](./docs/figma/swipe-screen.png)
   *(Figma: Swipe-Modus mit Inception-Poster, X- und Feuer-Button)*
@@ -238,7 +238,7 @@
 
   **TMDB API:** Poster werden via `/search/movie` und `/search/tv` bezogen. `scripts/expand-catalog.js` befüllt und aktualisiert die Datenbank automatisch.
 
-- **Deployment:** [DEPLOYMENT URL – z.B. https://what2watch.netlify.app]
+- **Deployment:** [https://what2watchdev.netlify.app](https://what2watchdev.netlify.app)
 
 - **Besondere Entscheidungen:**
   - **Svelte 5 Runes** (`$state`, `$derived`, `$props`) – moderner, performanter als Options API
