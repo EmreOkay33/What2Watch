@@ -24,20 +24,24 @@ export async function load({ locals }) {
 export const actions = {
   uploadAvatar: async ({ request, locals }) => {
     if (!locals.user) return fail(401, {});
-    const data = await request.formData();
-    const file = data.get('avatar');
-    if (!file || typeof file === 'string') return fail(400, { avatarError: 'Keine Datei' });
-    if (file.size > 10 * 1024 * 1024) return fail(400, { avatarError: 'Bild max. 10 MB' });
+    try {
+      const data = await request.formData();
+      const file = data.get('avatar');
+      if (!file || typeof file === 'string') return fail(400, { avatarError: 'Keine Datei' });
+      if (file.size > 2 * 1024 * 1024) return fail(400, { avatarError: 'Bild max. 2 MB' });
 
-    const buffer = await file.arrayBuffer();
-    const base64 = `data:${file.type};base64,${Buffer.from(buffer).toString('base64')}`;
+      const buffer = await file.arrayBuffer();
+      const base64 = `data:${file.type};base64,${Buffer.from(buffer).toString('base64')}`;
 
-    const db = await connectDB();
-    await db.collection('users').updateOne(
-      { _id: new ObjectId(locals.user.id) },
-      { $set: { avatar: base64 } }
-    );
-    return { avatarSaved: true };
+      const db = await connectDB();
+      await db.collection('users').updateOne(
+        { _id: new ObjectId(locals.user.id) },
+        { $set: { avatar: base64 } }
+      );
+      return { avatarSaved: true };
+    } catch (e) {
+      return fail(500, { avatarError: `Fehler: ${e.message}` });
+    }
   },
 
   removeAvatar: async ({ locals }) => {
