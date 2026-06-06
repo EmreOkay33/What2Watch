@@ -113,36 +113,52 @@
 <style>
   .page {
     min-height: 100vh;
-    padding: 1.5rem;
-    max-width: 980px;
+    padding: 3rem 1.5rem;
+    max-width: 1120px;
     margin: 0 auto;
     background: #09090b;
     color: #f5f5f5;
   }
 
   h1 {
-    margin-bottom: 0.5rem;
+    max-width: 780px;
+    margin: 0 0 0.55rem;
+    font-size: clamp(2.4rem, 6vw, 4.7rem);
+    font-weight: 900;
+    line-height: 0.98;
   }
 
   p {
     margin: 0;
     color: #b4b4b7;
+    line-height: 1.6;
   }
 
   .movie-form {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow:
+      0 30px 90px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
 
   .layout-grid {
     display: grid;
-    grid-template-columns: 360px minmax(0, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+    gap: 1rem;
     align-items: start;
   }
 
   .fields {
     display: grid;
     gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 24px;
+    background: #111214;
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   label {
@@ -156,10 +172,24 @@
   textarea {
     width: 100%;
     padding: 0.95rem 1rem;
-    border-radius: 18px;
-    border: 1px solid #d7d7d7;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
     font: inherit;
-    background: white;
+    color: #f5f5f5;
+    background: rgba(255, 255, 255, 0.06);
+    outline: none;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: #ff5a5f;
+    background: rgba(255, 255, 255, 0.09);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #8d8d92;
   }
 
   textarea {
@@ -176,11 +206,22 @@
     font-weight: 700;
     cursor: pointer;
     width: fit-content;
+    box-shadow: 0 16px 34px rgba(255, 90, 95, 0.22);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+    background: #ff6c72;
   }
 
   .poster-panel {
     display: grid;
     gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 24px;
+    background: #111214;
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .panel-label {
@@ -190,11 +231,12 @@
   .poster-upload {
     position: relative;
     display: grid;
-    border-radius: 28px;
+    border-radius: 24px;
     overflow: hidden;
     min-height: 520px;
     background: #111214;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.36);
   }
 
   .poster-upload img,
@@ -214,7 +256,9 @@
     align-items: center;
     padding: 0;
     color: #b4b4b7;
-    background: linear-gradient(180deg, #18181b 0%, #111214 100%);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0)),
+      #111214;
     font-size: 1rem;
   }
 
@@ -224,16 +268,16 @@
     margin: auto;
     border: none;
     border-radius: 999px;
-    background: white;
-    color: #666;
+    background: rgba(255, 255, 255, 0.1);
+    color: #f5f5f5;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
   }
 
   .poster-placeholder button:hover {
-    background: #f5f5f5;
+    background: #ff5a5f;
   }
 
   .poster-upload input {
@@ -258,8 +302,16 @@
   }
 
   @media (max-width: 900px) {
+    .page {
+      padding: 1.5rem 1rem;
+    }
+
     .layout-grid {
       grid-template-columns: 1fr;
+    }
+
+    .poster-upload {
+      min-height: 460px;
     }
   }
 </style>

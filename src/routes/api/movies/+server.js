@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { connectDB } from '$lib/db';
+import { connectDB } from '$lib/server/db.js';
 
 export async function GET() {
   const db = await connectDB();
