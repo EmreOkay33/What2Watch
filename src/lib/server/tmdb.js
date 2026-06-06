@@ -1,18 +1,18 @@
-import { TMDB_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 const BASE = 'https://api.themoviedb.org/3';
 const IMG  = 'https://image.tmdb.org/t/p/w185';
 
 async function tmdb(path) {
-  if (!TMDB_API_KEY) return null;
-  const res = await fetch(`${BASE}${path}?api_key=${TMDB_API_KEY}&language=de-DE`);
+  if (!env.TMDB_API_KEY) return null;
+  const res = await fetch(`${BASE}${path}?api_key=${env.TMDB_API_KEY}&language=de-DE`);
   if (!res.ok) return null;
   return res.json();
 }
 
 async function tmdbQ(path, params = '') {
-  if (!TMDB_API_KEY) return null;
-  const res = await fetch(`${BASE}${path}?api_key=${TMDB_API_KEY}&language=de-DE&${params}`);
+  if (!env.TMDB_API_KEY) return null;
+  const res = await fetch(`${BASE}${path}?api_key=${env.TMDB_API_KEY}&language=de-DE&${params}`);
   if (!res.ok) return null;
   return res.json();
 }

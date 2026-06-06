@@ -221,10 +221,10 @@
                     Genre *
                     <input type="text" name="genre" placeholder="z.B. Action, Drama, Anime" list="genre-suggestions" required />
                     <datalist id="genre-suggestions">
-                      <option value="Action" /><option value="Drama" /><option value="Sci-Fi" />
-                      <option value="Thriller" /><option value="Komödie" /><option value="Crime" />
-                      <option value="Horror" /><option value="Romanze" /><option value="Animation" />
-                      <option value="Anime" /><option value="Fantasy" /><option value="Dokumentation" />
+                      <option value="Action"></option><option value="Drama"></option><option value="Sci-Fi"></option>
+                      <option value="Thriller"></option><option value="Komödie"></option><option value="Crime"></option>
+                      <option value="Horror"></option><option value="Romanze"></option><option value="Animation"></option>
+                      <option value="Anime"></option><option value="Fantasy"></option><option value="Dokumentation"></option>
                     </datalist>
                   </label>
                 </div>
