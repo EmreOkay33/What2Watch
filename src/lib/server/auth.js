@@ -1,13 +1,17 @@
-import bcrypt from 'bcryptjs';
-import { randomBytes } from 'crypto';
+import { randomBytes, scryptSync, timingSafeEqual } from 'crypto';
 import { connectDB, ObjectId } from './db.js';
 
 export async function hashPassword(password) {
-  return bcrypt.hash(password, 12);
+  const salt = randomBytes(16).toString('hex');
+  const hash = scryptSync(password, salt, 64).toString('hex');
+  return `${salt}:${hash}`;
 }
 
-export async function verifyPassword(password, hash) {
-  return bcrypt.compare(password, hash);
+export async function verifyPassword(password, stored) {
+  const [salt, hash] = stored.split(':');
+  const hashBuffer = Buffer.from(hash, 'hex');
+  const derived = scryptSync(password, salt, 64);
+  return timingSafeEqual(hashBuffer, derived);
 }
 
 export async function createSession(userId) {
